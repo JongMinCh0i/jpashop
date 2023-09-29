@@ -24,6 +24,6 @@ public class Member {
 
     // 나는 연관관계의 거울입니다. 할때 mappedBy 추가
     @OneToMany(mappedBy = "member")
-    List<Order> orders = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 
 }
