@@ -1,7 +1,8 @@
 package jpabook.jpashop.domain.repository;
 
 import jpabook.jpashop.domain.Member;
-import jpabook.jpashop.domain.service.MemberService;
+import jpabook.jpashop.service.MemberService;
+import jpabook.jpashop.repository.MemberRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
