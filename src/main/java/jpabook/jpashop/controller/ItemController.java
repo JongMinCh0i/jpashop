@@ -64,8 +64,9 @@ public class ItemController {
 
     @PostMapping("items/{itemId}/edit")
     // 별도의 이름을 설정하는 이유는 thymeleaf의 $th:object 이름과 맞추기 위해서
-    public String updateItem(@ModelAttribute("form") BookForm form) {
+    public String updateItem(@PathVariable Long itemId, @ModelAttribute("form") BookForm form) {
 
+/*
         Book book = new Book();
 
         book.setId(form.getId());
@@ -74,8 +75,9 @@ public class ItemController {
         book.setStockQuantity(form.getStockQuantity());
         book.setAuthor(form.getAuthor());
         book.setIsbn(form.getIsbn());
+*/
 
-        itemService.saveItem(book);
+        itemService.updateItem(itemId, form.getName(), form.getPrice(), form.getStockQuantity());
         return "redirect:/items";
     }
 }

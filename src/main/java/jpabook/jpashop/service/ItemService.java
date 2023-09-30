@@ -20,6 +20,36 @@ public class ItemService {
         itemRepository.save(item);
     }
 
+    /**
+     * 변경감지
+     */
+  /*  @Transactional
+    public Item updateItem(Long itemId, Book param) {
+        Item findItem = itemRepository.findOne(itemId);
+        findItem.setPrice(param.getPrice());
+        findItem.setName(param.getName());
+        findItem.setStockQuantity(param.getStockQuantity());
+        return findItem;
+    }*/
+
+    // 훨씬 나은 코드
+    @Transactional
+    public void updateItem(Long itemId, String name, int price, int stockQuantity) {
+        Item findItem = itemRepository.findOne(itemId);
+        findItem.setName(name);
+        findItem.setPrice(price);
+        findItem.setStockQuantity(stockQuantity);
+    }
+
+    // DTO를 사용해서 파라미터를 줄인 예시
+//    @Transactional
+//    public void updateItem(Long itemId, UpdateItemDto itemDto) {
+//        Item findItem = itemRepository.findOne(itemId);
+//        itemDto.setName(name);
+//        itemDto.setPrice(price);
+//        itemDto.setStockQuantity(stockQuantity);
+//    }
+
     public List<Item> findItems() {
         return itemRepository.findAll();
     }
