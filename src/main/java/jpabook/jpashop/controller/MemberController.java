@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -43,5 +44,15 @@ public class MemberController {
 
         memberService.join(member);
         return "redirect:/";
+    }
+
+    // 실무적으로 복잡해질 경우 엔티티를 화면에 필요한 정보만 담고 있는 DTO로 변환해서 넘긴다.
+    // 필요한 정보만! API를 만들 때는 절대 엔티티를 외부로 노출시키면 안된다.
+
+    @GetMapping("/members")
+    public String list(Model model) {
+        List<Member> members = memberService.findMembers();
+        model.addAttribute("members", members);
+        return "members/memberList";
     }
 }
